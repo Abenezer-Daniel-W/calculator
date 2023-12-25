@@ -1,17 +1,18 @@
 
 function isNum(a){
-    return isNaN(parseFloat(a)) == false ;
+    return isNaN(parseFloat(a)) == false;
+
 }
 
 
 function handleNumberClick(val){
     if (!aFilled){
-        a = a.concat(val);
+        a += val;
         console.log("a:"+a);
         displayContent(a);
     }
     else if (!bFilled){
-        b = b.concat(val);
+        b +=val;
         displayContent(b, true);
         console.log("b:"+b);
     }
@@ -22,7 +23,7 @@ function handleOperatorClick(op){
     console.log("op");
     if (a != ""){
         aFilled = true;
-        aOp = parseInt(a);
+        aOp = parseFloat(a);
         // console.log("emptig a " + aOp) ;
         prevOp = op;
         displayContent(a + prevOp)
@@ -31,7 +32,7 @@ function handleOperatorClick(op){
     if (b != ""){
         // console.log("emptig b " + bOp + " " + prevOp);
         bFilled = true;
-        bOp = parseInt(b);
+        bOp = parseFloat(b);
         b  = "";
 
     }
@@ -63,11 +64,13 @@ function handleOperatorClick(op){
 }
 
 function clearInput(){
-    a = "";
-    prevOp = "";
-    b = "";
-    op = "";
-    console.log("clear");
+     a = "";
+     b = "";
+     aOp = 0;
+     bOp = 0;
+     prevOp = "";
+     aFilled = false;
+     bFilled = false;
     displayContent("");
 }
 
@@ -76,23 +79,24 @@ function deleteMostRecent(){
     if (b!=""){
         b="";
         bFilled = false;
+        displayContent("");
     }
     else if(prevOp !=""){
         prevOp ="";
+        displayContent("");
+
     }
     else{
         a = "";
+        displayContent("");
+
     }
 }
 
 function displayContent(val, isB=false){
-    if(isB == false){
-        display.innerHTML = "";
-        display.textContent = val;
-    }
-    else {
-        display.innerHTML += "<p>" + val + "</p>";
-    }
+    display.innerHTML = "";
+    display.innerHTML += "<p>" + val + "</p>";
+    
 }
 
 
@@ -106,7 +110,7 @@ let bFilled = false;
 
 const numbersBtn = document.querySelectorAll(".input button");
 const operaterBtn = document.querySelectorAll(".operator button" );
-const clearBtn = document.getElementById("clear");
+const clearBtn = document.querySelector("#clear");
 const deleteBtn = document.getElementById("delete");
 const display = document.querySelector(".display")
 
@@ -116,7 +120,7 @@ numbersBtn.forEach((item) => item.addEventListener("click",function(){
     }
 } ));
 operaterBtn.forEach((item) => item.addEventListener("click",() => handleOperatorClick(item.innerText)));
-clearBtn.addEventListener("click", () => clear());
+clearBtn.addEventListener("click", () => clearInput());
 deleteBtn.addEventListener("click", () => deleteMostRecent());
 
 

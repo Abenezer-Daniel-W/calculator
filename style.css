@@ -1,39 +1,54 @@
+:root {
+    --background: #f6f6f6;
+    --font: #222;
+    --border: #333;
+    --screen: #eee;
+    --calculator: #aaa;
+    --btn: #eee;
+    --btn-hover: #ddd;
+    --btn-active: #ccc;
+    --btn-red: #faa;
+    --btn-red-hover: #e99;
+    --btn-red-active: #d88;
+    --btn-blue: #aaf;
+    --btn-blue-hover: #99e;
+    --btn-blue-active: #88d;
+  }
 body{
     display: flex;
     flex-direction:  column;
-    background-color: #2adb74;
+    background-color: var(--background);
     justify-content: center;
     align-items: center;
 }
 .calculator{
     display: flex;
-    /* border: 3px solid red;s */
-    font-size: 24px;
-    justify-content: flex-start;
-    align-items: center;
     flex-direction:  column;
-    background-color: #53b2ed;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--calculator);
     width: 700px;
-    height: 600px;
+    height: 700px;
     gap: 10px;
     margin-top: 50px;
-    border-radius: 5px;
+    border-radius: 15px;
 
 }
 .display{
     display: flex;
-    width: 690px;
-    height: 100px;
+    width: 90%;
+    height: 10%;
     justify-content: end;
-    background-color: #f0ecb9;
+    background-color: var(--screen);
     margin-top: 20px;
 
 }
 
 .container{
     display: flex;
-    flex: 1;
-    width: 700px;
+    width: 85%;
+    height: 95%;
     gap : 10px;
 }
 .input{
@@ -59,21 +74,30 @@ button{
     width: 100px;
     height: 100px;
     border-radius: 5px;
-    background-color: #d8e067;
+    background-color:var(--btn);
     font-size: 24px;
+}
+button:hover{
+    background-color: var(--btn-hover);
 }
 
 .input button{
     width: 120px;
     height: 110px;
-    background-color: #d3daed;
     border-radius: 5px;
 }
 
 #clear{
-    background-color: crimson;
+    background-color: var(--btn-red);
+}
+#clear:hover{
+    background-color: var(--btn-red-hover);
 }
 #delete {
-    background-color: darkorange ;
+    background-color:  var(--btn-blue);
+
+}
+#delete:hover {
+    background-color: var(--btn-hover) ;
 
 }
